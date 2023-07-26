@@ -10,6 +10,7 @@ import Http from "../../helpers/Fetch";
 
 interface DataRegister {
 	name?: string | null,
+	username?: string | null,
 	email?: string | null,
 	password?: string | null,
 	confirmPassword?: string | null,
@@ -20,6 +21,7 @@ const Register: FC = () => {
 	const [loading, setLoading] = useState<boolean>(false);
 	const [data, setData] = useState<DataRegister>({
 		name: '',
+		username: '',
 		email: '',
 		password: '',
 		confirmPassword: ''
@@ -27,6 +29,7 @@ const Register: FC = () => {
 
 	const [errData, setErrData] = useState<DataRegister>({
 		name: '',
+		username: '',
 		email: '',
 		password: '',
 		confirmPassword: ''
@@ -41,6 +44,9 @@ const Register: FC = () => {
 
 		let errStr = "";
 		if (name === "name") {
+			errStr = InputValidation.TextValidation(value, 30, "Name", true);
+		}
+		if (name === "username") {
 			errStr = InputValidation.TextValidation(value, 30, "Name", true);
 		}
 		if (name === "email") {
@@ -86,7 +92,7 @@ const Register: FC = () => {
 	const SignUp = async () => {
 		setLoading(true);
 		try {
-			const res = await Http.post("/user/signup", data);
+			const res = await Http.post("/register", data);
 			setLoading(false);
 			navigate("/auth/login");
 		} catch (err: any) {
@@ -140,6 +146,18 @@ const Register: FC = () => {
 								onChange={onChange}
 							/>
 						</div>
+						<div className="mb-5">
+							<CustomInput
+								name="username"
+								label="Username"
+								required={true}
+								type="text"
+								value={data.username ?? ''}
+								error={errData.name}
+								onChange={onChange}
+							/>
+						</div>
+
 						<div className="mb-5">
 							<CustomInput
 								name="email"

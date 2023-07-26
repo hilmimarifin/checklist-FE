@@ -18,21 +18,6 @@ const MainLayout: FC<MainLayoutAttributes> = ({ children }) => {
 					<nav>
 						<ul className=" flex gap-x-5">
 							<li>
-								<div onClick={() => navigate("/contact")} className=" cursor-pointer text-menu-label transition-all hover:text-white">
-									<span>Contact</span>
-								</div>
-							</li>
-							<li>
-								<div onClick={() => navigate("/price")} className=" cursor-pointer text-menu-label transition-all hover:text-white">
-									<span>Price</span>
-								</div>
-							</li>
-							<li>
-								<div onClick={() => navigate("/about")} className=" cursor-pointer text-menu-label transition-all hover:text-white">
-									<span>About</span>
-								</div>
-							</li>
-							<li>
 								<div onClick={() => navigate("/auth/login")} className=" cursor-pointer text-menu-label transition-all hover:text-white">
 									<span>Login</span>
 								</div>

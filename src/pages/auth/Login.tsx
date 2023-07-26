@@ -62,7 +62,7 @@ const Login: FC = () => {
 		if (valid) {
 			setLoading(true)
 			try {
-				const response = await Http.post("/user/login", data, { withCredentials: true });
+				const response = await Http.post("/login", data, { withCredentials: true });
 				const responseData: AuthAttributes = {
 					id: response.data?.data?.id,
 					name: response.data?.data?.name,
